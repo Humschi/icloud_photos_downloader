@@ -916,13 +916,13 @@ def download_builder(
             if created_before and created_date > created_before:
                 logger.debug(
                     "Skipping %s, date is after the given latest date.",
-                    filename)
+                    photo.filename)
                 return False
 
             if created_after and created_date < created_after:
                 logger.debug(
                     "Skipping %s, date is before the given earliest date.",
-                    filename)
+                    photo.filename)
                 return False
 
             if folder_structure.lower() == "none":
