@@ -636,8 +636,8 @@ def main(
     delete_after_download: bool,
     keep_icloud_recent_days: Optional[int],
     domain: str,
-    created_before: Optional[datetime.datetime],
-    created_after: Optional[datetime.datetime],
+    created_before: datetime.datetime,
+    created_after: datetime.datetime,
     watch_with_interval: Optional[int],
     dry_run: bool,
     filename_cleaner: Callable[[str], str],
@@ -689,7 +689,8 @@ def main(
 
         if created_before:
             try:
-                created_before = created_before.strftime("%Y-%m-%d")
+                created_before = datetime.datetime.strptime(
+                    created_before.strftime("%Y-%m-%d"), "%Y-%m-%d")
             except ValueError:
                 print("Given --created-before does not match required format YYYY-MM-DD.")
                 sys.exit(2)
@@ -698,7 +699,7 @@ def main(
 
         if created_after:
             try:
-                created_after = created_after.strftime("%Y-%m-%d")
+                created_after = datetime.datetime.strptime(created_after.strftime("%Y-%m-%d"), "%Y-%m-%d")
             except ValueError:
                 print("Given --created-after does not match required format YYYY-MM-DD.")
                 sys.exit(2)
