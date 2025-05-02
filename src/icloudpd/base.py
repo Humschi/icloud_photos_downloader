@@ -689,8 +689,12 @@ def main(
 
         if created_before:
             try:
-                created_before = datetime.datetime.strptime(
-                    created_before.strftime("%Y-%m-%d"), "%Y-%m-%d")
+                if (isinstance(created_before, str)):
+                    created_before = datetime.datetime.strptime(
+                        created_before, "%Y-%m-%d")
+                elif (isinstance(created_before, datetime.datetime)):
+                    created_before = datetime.datetime.strptime(
+                        created_before.strftime("%Y-%m-%d"), "%Y-%m-%d")
             except ValueError:
                 print("Given --created-before does not match required format YYYY-MM-DD.")
                 sys.exit(2)
@@ -699,7 +703,12 @@ def main(
 
         if created_after:
             try:
-                created_after = datetime.datetime.strptime(created_after.strftime("%Y-%m-%d"), "%Y-%m-%d")
+                if (isinstance(created_after, str)):
+                    created_after = datetime.datetime.strptime(
+                        created_after, "%Y-%m-%d")
+                elif (isinstance(created_before, datetime.datetime)):
+                    created_after = datetime.datetime.strptime(
+                        created_after.strftime("%Y-%m-%d"), "%Y-%m-%d")
             except ValueError:
                 print("Given --created-after does not match required format YYYY-MM-DD.")
                 sys.exit(2)
