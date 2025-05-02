@@ -209,7 +209,7 @@ class CliTestCase(TestCase):
         )
         assert result.exit_code == 2
 
-    def test_bad_created_before_format(self):
+    def test_bad_created_before_format(self) -> None:
         runner = CliRunner()
         result = runner.invoke(
             main,
@@ -226,7 +226,7 @@ class CliTestCase(TestCase):
         )
         assert result.exit_code == 2
 
-    def test_bad_created_after_format(self):
+    def test_bad_created_after_format(self) -> None:
         runner = CliRunner()
         result = runner.invoke(
             main,
