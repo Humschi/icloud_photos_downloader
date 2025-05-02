@@ -220,7 +220,7 @@ class CliTestCase(TestCase):
                 "password1",
                 "-d",
                 "/tmp",
-                "--created-before", 
+                "--created-before 2025-13-24", 
                 "alpha"
             ],
         )
@@ -237,7 +237,7 @@ class CliTestCase(TestCase):
                 "password1",
                 "-d",
                 "/tmp",
-                "--created-after", 
+                "--created-after 202505-02", 
                 "alpha"
             ],
         )
